@@ -1,24 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import List from "./Components/List";
+import AddList from "./Components/AddList";
+
+import DB from "./assets/db.json";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="todo">
+      <div className="todo__sidebar">
+
+        <List
+          items={[
+            {
+              icon: (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                >
+                  <path d="M0 0h24v24H0V0z" fill="none" />
+                  <path d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5 5.5 6.83 5.5 6 4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5 1.5-.68 1.5-1.5-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z" />
+                </svg>
+              ),
+              name: "Список задач"
+            },
+          ]}
+          isRemovable
+        />
+
+        <List
+          items={[
+            {
+              color: "green",
+              name: "Покупки",
+            },
+            {
+              color: "blue",
+              name: "FrontEnd",
+            },
+            {
+              color: "pink",
+              name: "Film & Serial",
+            },
+          ]}
+        />
+        <AddList colors={DB.colors} />
+      </div>
+      <div className="todo__tasks"></div>
     </div>
   );
 }
